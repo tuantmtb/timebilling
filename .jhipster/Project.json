@@ -27,6 +27,38 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "priority",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "begin",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "end",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "budget",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "poNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "attachment",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20161025031845",

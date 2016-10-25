@@ -20,6 +20,14 @@
                 <tr>
                     <th><span>ID</span></th>
                     <th><span>Name</span></th>
+                    <th><span>Priority</span></th>
+                    <th><span>Status</span></th>
+                    <th><span>Begin</span></th>
+                    <th><span>End</span></th>
+                    <th><span>Budget</span></th>
+                    <th><span>Po Number</span></th>
+                    <th><span>Note</span></th>
+                    <th><span>Attachment</span></th>
                     <th><span>Customer</span></th>
                     <th><span>Employee</span></th>
                     <th><span>Category</span></th>
@@ -30,6 +38,14 @@
                 <tr ng-repeat="project in vm.projects track by project.id">
                     <td><a ui-sref="project-detail({id:project.id})">{{project.id}}</a></td>
                     <td>{{project.name}}</td>
+                    <td>{{project.priority}}</td>
+                    <td>{{project.status}}</td>
+                    <td>{{project.begin | date:'medium'}}</td>
+                    <td>{{project.end | date:'medium'}}</td>
+                    <td>{{project.budget}}</td>
+                    <td>{{project.poNumber}}</td>
+                    <td>{{project.note}}</td>
+                    <td>{{project.attachment}}</td>
                     <td>
                         <a ui-sref="customer-detail({id:project.customer.id})">{{project.customer.id}}</a>
                     </td>

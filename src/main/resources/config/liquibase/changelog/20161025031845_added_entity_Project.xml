@@ -25,6 +25,38 @@
                 <constraints nullable="false" />
             </column>
             
+            <column name="priority" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="begin" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="end" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="budget" type="double">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="po_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="note" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="attachment" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
             <column name="customer_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -39,6 +71,8 @@
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="project" columnName="begin" columnDataType="datetime"/>
+        <dropDefaultValue tableName="project" columnName="end" columnDataType="datetime"/>
         
     </changeSet>
 </databaseChangeLog>

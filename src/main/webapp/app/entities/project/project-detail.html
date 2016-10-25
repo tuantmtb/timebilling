@@ -8,6 +8,38 @@
         <dd>
             <span>{{vm.project.name}}</span>
         </dd>
+        <dt><span>Priority</span></dt>
+        <dd>
+            <span>{{vm.project.priority}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{vm.project.status}}</span>
+        </dd>
+        <dt><span>Begin</span></dt>
+        <dd>
+            <span>{{vm.project.begin | date:'medium'}}</span>
+        </dd>
+        <dt><span>End</span></dt>
+        <dd>
+            <span>{{vm.project.end | date:'medium'}}</span>
+        </dd>
+        <dt><span>Budget</span></dt>
+        <dd>
+            <span>{{vm.project.budget}}</span>
+        </dd>
+        <dt><span>Po Number</span></dt>
+        <dd>
+            <span>{{vm.project.poNumber}}</span>
+        </dd>
+        <dt><span>Note</span></dt>
+        <dd>
+            <span>{{vm.project.note}}</span>
+        </dd>
+        <dt><span>Attachment</span></dt>
+        <dd>
+            <span>{{vm.project.attachment}}</span>
+        </dd>
         <dt><span>Customer</span></dt>
         <dd>
             <a ui-sref="customer-detail({id:vm.project.customer.id})">{{vm.project.customer.id}}</a>

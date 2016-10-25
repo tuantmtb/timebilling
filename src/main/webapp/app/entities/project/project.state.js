@@ -96,6 +96,14 @@
                         entity: function () {
                             return {
                                 name: null,
+                                priority: null,
+                                status: null,
+                                begin: null,
+                                end: null,
+                                budget: null,
+                                poNumber: null,
+                                note: null,
+                                attachment: null,
                                 id: null
                             };
                         }

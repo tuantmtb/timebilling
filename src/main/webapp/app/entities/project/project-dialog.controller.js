@@ -12,6 +12,8 @@
 
         vm.project = entity;
         vm.clear = clear;
+        vm.datePickerOpenStatus = {};
+        vm.openCalendar = openCalendar;
         vm.save = save;
         vm.customers = Customer.query();
         vm.employees = Employee.query();
@@ -44,6 +46,11 @@
             vm.isSaving = false;
         }
 
+        vm.datePickerOpenStatus.begin = false;
+        vm.datePickerOpenStatus.end = false;
 
+        function openCalendar (date) {
+            vm.datePickerOpenStatus[date] = true;
+        }
     }
 })();

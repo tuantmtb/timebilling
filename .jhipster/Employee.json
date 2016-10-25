@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "email",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "employee"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "billingRate",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20161025031611",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "employee",
+    "pagination": "no"
+}

@@ -1,0 +1,34 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "employee",
+            "otherEntityName": "employee",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateWorked",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "billableHour",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "workCode",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161025032207",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "project_hour",
+    "pagination": "no"
+}

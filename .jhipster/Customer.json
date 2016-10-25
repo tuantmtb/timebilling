@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "email",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "customer"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20161025031513",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "customer",
+    "pagination": "no"
+}

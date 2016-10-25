@@ -1,0 +1,18 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20161025030506",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "job",
+    "pagination": "no"
+}

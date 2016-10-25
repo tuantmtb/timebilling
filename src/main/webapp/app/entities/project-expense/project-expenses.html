@@ -1,0 +1,70 @@
+<div>
+    <h2>Project Expenses</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="project-expense.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Project Expense
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Date</span></th>
+                    <th><span>Description</span></th>
+                    <th><span>Code</span></th>
+                    <th><span>Amount</span></th>
+                    <th><span>Project</span></th>
+                    <th><span>Employee</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="projectExpense in vm.projectExpenses track by projectExpense.id">
+                    <td><a ui-sref="project-expense-detail({id:projectExpense.id})">{{projectExpense.id}}</a></td>
+                        <td>{{projectExpense.date | date:'mediumDate'}}</td>
+                    <td>{{projectExpense.description}}</td>
+                    <td>{{projectExpense.code}}</td>
+                    <td>{{projectExpense.amount}}</td>
+                    <td>
+                        <a ui-sref="project-detail({id:projectExpense.project.id})">{{projectExpense.project.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="employee-detail({id:projectExpense.employee.id})">{{projectExpense.employee.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="project-expense-detail({id:projectExpense.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="project-expense.edit({id:projectExpense.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="project-expense.delete({id:projectExpense.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

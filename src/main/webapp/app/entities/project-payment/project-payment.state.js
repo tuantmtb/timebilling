@@ -1,0 +1,163 @@
+(function() {
+    'use strict';
+
+    angular
+        .module('timebillingApp')
+        .config(stateConfig);
+
+    stateConfig.$inject = ['$stateProvider'];
+
+    function stateConfig($stateProvider) {
+        $stateProvider
+        .state('project-payment', {
+            parent: 'entity',
+            url: '/project-payment',
+            data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'ProjectPayments'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/project-payment/project-payments.html',
+                    controller: 'ProjectPaymentController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+            }
+        })
+        .state('project-payment-detail', {
+            parent: 'entity',
+            url: '/project-payment/{id}',
+            data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'ProjectPayment'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/project-payment/project-payment-detail.html',
+                    controller: 'ProjectPaymentDetailController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                entity: ['$stateParams', 'ProjectPayment', function($stateParams, ProjectPayment) {
+                    return ProjectPayment.get({id : $stateParams.id}).$promise;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'project-payment',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
+                }]
+            }
+        })
+        .state('project-payment-detail.edit', {
+            parent: 'project-payment-detail',
+            url: '/detail/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/project-payment/project-payment-dialog.html',
+                    controller: 'ProjectPaymentDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['ProjectPayment', function(ProjectPayment) {
+                            return ProjectPayment.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('^', {}, { reload: false });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('project-payment.new', {
+            parent: 'project-payment',
+            url: '/new',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/project-payment/project-payment-dialog.html',
+                    controller: 'ProjectPaymentDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                amount: null,
+                                date: null,
+                                method: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('project-payment', null, { reload: 'project-payment' });
+                }, function() {
+                    $state.go('project-payment');
+                });
+            }]
+        })
+        .state('project-payment.edit', {
+            parent: 'project-payment',
+            url: '/{id}/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/project-payment/project-payment-dialog.html',
+                    controller: 'ProjectPaymentDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['ProjectPayment', function(ProjectPayment) {
+                            return ProjectPayment.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('project-payment', null, { reload: 'project-payment' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('project-payment.delete', {
+            parent: 'project-payment',
+            url: '/{id}/delete',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/project-payment/project-payment-delete-dialog.html',
+                    controller: 'ProjectPaymentDeleteController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['ProjectPayment', function(ProjectPayment) {
+                            return ProjectPayment.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('project-payment', null, { reload: 'project-payment' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        });
+    }
+
+})();

@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Project Hour</span> {{vm.projectHour.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Date Worked</span></dt>
+        <dd>
+            <span>{{vm.projectHour.dateWorked | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{vm.projectHour.description}}</span>
+        </dd>
+        <dt><span>Billable Hour</span></dt>
+        <dd>
+            <span>{{vm.projectHour.billableHour}}</span>
+        </dd>
+        <dt><span>Work Code</span></dt>
+        <dd>
+            <span>{{vm.projectHour.workCode}}</span>
+        </dd>
+        <dt><span>Employee</span></dt>
+        <dd>
+            <a ui-sref="employee-detail({id:vm.projectHour.employee.id})">{{vm.projectHour.employee.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="project-hour-detail.edit({id:vm.projectHour.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,66 @@
+<div>
+    <h2>Project Hours</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="project-hour.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Project Hour
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Date Worked</span></th>
+                    <th><span>Description</span></th>
+                    <th><span>Billable Hour</span></th>
+                    <th><span>Work Code</span></th>
+                    <th><span>Employee</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="projectHour in vm.projectHours track by projectHour.id">
+                    <td><a ui-sref="project-hour-detail({id:projectHour.id})">{{projectHour.id}}</a></td>
+                        <td>{{projectHour.dateWorked | date:'mediumDate'}}</td>
+                    <td>{{projectHour.description}}</td>
+                    <td>{{projectHour.billableHour}}</td>
+                    <td>{{projectHour.workCode}}</td>
+                    <td>
+                        <a ui-sref="employee-detail({id:projectHour.employee.id})">{{projectHour.employee.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="project-hour-detail({id:projectHour.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="project-hour.edit({id:projectHour.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="project-hour.delete({id:projectHour.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
